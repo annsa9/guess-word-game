@@ -29,13 +29,13 @@ import { HintPage } from '../pages/hint/hint';
 import { Ads } from "../services/ads";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyC5uJ-6uKOtwzM5O5nnL0ToZPAYu_sZVEI",
-  authDomain: "fourinoneapp-6284f.firebaseapp.com",
-  databaseURL: "https://fourinoneapp-6284f.firebaseio.com/",
-  storageBucket: "fourinoneapp-6284f.appspot.com",
-  messagingSenderId: '77506874176',
-  projectId: 'fourinoneapp-6284f'
-};
+         apiKey: "xxxxx",
+         authDomain: "xxxxx",
+         databaseURL: "xxxxx",
+         storageBucket: "xxxxx",
+         messagingSenderId: "xxxxx",
+         projectId: "xxxxx",
+       };
 
 @NgModule({
   declarations: [

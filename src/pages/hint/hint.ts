@@ -20,7 +20,7 @@ export class HintPage {
 
   getInAppProducts() {
     this.iap
-      .getProducts(['io.ionic.fourinonegame.remove_ad', 'io.ionic.fourinonegame.10_hints'])
+      .getProducts(["xxxxx", "xxxxx"])
       .then((products) => {
         console.log("products", products);
       })

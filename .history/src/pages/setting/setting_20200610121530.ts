@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, ViewController, Events} from 'ionic-angular';
+import { NavController, Platform, ViewController, Events, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { Market } from '@ionic-native/market';
@@ -14,42 +14,28 @@ import { InAppPurchase } from '@ionic-native/in-app-purchase';
 export class SettingPage {
   public credit: boolean;
   public isSound: boolean;
+  public isAd: boolean;
 
   constructor(public navCtrl: NavController, public platform: Platform, private viewCtrl: ViewController,
               private nativeAudio: NativeAudio, public storage: Storage, private market: Market, 
-              private socialSharing: SocialSharing, private iap: InAppPurchase, public events: Events) {
+              private socialSharing: SocialSharing, private iap: InAppPurchase, public events: Events,
+              params: NavParams) {
     this.platform.ready().then(() => {
+      this.isAd = params.get('isAd');
       this.getInAppProducts();
       this.checkSoundEnabled();
     });
   }
 
   getInAppProducts() {
-    this.iap
-      .getProducts(['io.ionic.fourinoneapp.remove_ad'])
-      .then((products) => {
-        console.log("products", products);
-        
-        // this.iap
-        //   .restorePurchases()
-        //   .then(function (data) {
-        //     console.log('restore',data);
-        //     /*
-        //       [{
-        //         transactionId: ...
-        //         productId: ...
-        //         state: ...
-        //         date: ...
-        //       }]
-        //     */
-        //   })
-        //   .catch(function (err) {
-        //     console.log(err);
-        //   });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+     this.iap
+       .getProducts(["xxxxx"])
+       .then((products) => {
+         console.log("products", products);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
   }
 
   checkSoundEnabled() {
@@ -83,13 +69,13 @@ export class SettingPage {
   }
 
   rateApp() {
-    this.market.open('io.ionic.fourinoneapp');
+    this.market.open('io.ionic.fourinonegame');
   }
 
   shareApp() {
     let text = "Hey, I found this amazing brainteaser app! Be sure to check it out. \n";
     let subject = "A perfect fun game";
-    let url = "https://play.google.com/store/apps/details?id=io.ionic.fourinoneapp";
+    let url = "https://play.google.com/store/apps/details?id=io.ionic.fourinonegame";
 
     this.socialSharing.share(text, subject, '', url).then(() => {
       console.log("suceesfully shared");
@@ -103,11 +89,11 @@ export class SettingPage {
       .buy(productId)
       .then((data) => {
         console.log(JSON.stringify(data));
-        alert(JSON.stringify(data));
 
         switch (productId) {
           case 'remove_ad': {
             this.events.publish('ad_change', false);
+            this.isAd = false;
             break;
           }
           default: {
@@ -116,9 +102,10 @@ export class SettingPage {
           }
         }
 
+        return this.iap.consume(data.productType, data.receipt, data.signature);
       })
       .catch((err) => {
-        alert(JSON.stringify(err));
+        console.log(JSON.stringify(err));
       });    
   }
 }

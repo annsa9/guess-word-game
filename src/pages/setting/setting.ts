@@ -29,13 +29,13 @@ export class SettingPage {
 
   getInAppProducts() {
      this.iap
-      .getProducts(['io.ionic.fourinonegame.remove_ad'])
-      .then((products) => {
-        console.log("products", products);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+       .getProducts(["xxxxx"])
+       .then((products) => {
+         console.log("products", products);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
   }
 
   checkSoundEnabled() {

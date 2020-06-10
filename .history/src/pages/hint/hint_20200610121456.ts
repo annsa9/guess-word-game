@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Platform, ModalController, ViewController, Events } from 'ionic-angular';
+import { NavController, Platform, ViewController, Events, NavParams } from 'ionic-angular';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
 
 @Component({
@@ -8,17 +8,19 @@ import { InAppPurchase } from '@ionic-native/in-app-purchase';
 })
 
 export class HintPage {
+  public isAd: boolean;
 
   constructor(public navCtrl: NavController, public platform: Platform, private viewCtrl: ViewController,
-              private iap: InAppPurchase, public events: Events) {
+              private iap: InAppPurchase, public events: Events, params: NavParams) {
     this.platform.ready().then(() => {
+      this.isAd = params.get('isAd');
       this.getInAppProducts();
     });
   }
 
   getInAppProducts() {
     this.iap
-      .getProducts(['io.ionic.fourinoneapp.remove_ad', 'io.ionic.fourinoneapp.60_hints'])
+      .getProducts(["xxxxx", "xxxxx"])
       .then((products) => {
         console.log("products", products);
       })
@@ -32,7 +34,6 @@ export class HintPage {
       .buy(productId)
       .then((data) => {
         console.log(JSON.stringify(data));
-        alert(JSON.stringify(data));
 
         switch (productId) {
           case '10_hints': {
@@ -53,6 +54,7 @@ export class HintPage {
           }
           case 'remove_ad': {
             this.events.publish('ad_change', false);
+            this.isAd = false;
             break;
           }
           default: {
@@ -61,14 +63,11 @@ export class HintPage {
           }
         }
 
-        // consuming is necessary to purchase again
-        if (productId != 'remove_ad') {
-          return this.iap.consume(data.productType, data.receipt, data.signature);
-        }
+        return this.iap.consume(data.productType, data.receipt, data.signature);
 
       })
       .catch((err) => {
-        alert(JSON.stringify(err));
+        console.log(JSON.stringify(err));
       });
   }
 
