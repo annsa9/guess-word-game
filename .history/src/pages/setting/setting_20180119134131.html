@@ -1,0 +1,72 @@
+<ion-content class="main-view">
+    <div class="overlay" (click)="dismiss()"></div>
+    <div class="setting-content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>
+                    Settings
+                </ion-title>
+                <ion-buttons start>
+                    <button ion-button (click)="dismiss()">
+                        <span ion-text color="primary" showWhen="ios">Cancel</span>
+                        <ion-icon name="md-close" showWhen="android, windows" class="icon-cancel"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        
+        <ion-list no-border *ngIf='!credit'>
+
+            <ion-item class="volume-button">
+                <ion-icon name="volume-mute" item-start></ion-icon>
+                <ion-label>
+                    Sound
+                </ion-label>
+                <ion-toggle [ngModel]="isSound" (ionChange)="changeSound()" item-end></ion-toggle>                
+            </ion-item>
+
+            <ion-item (click)="removeAds('remove_ad')" *ngIf="!isAd">
+                <ion-label>
+                    Remove Ads
+                </ion-label>
+                <ion-icon name="hand" item-start></ion-icon>
+                <ion-label item-end>
+                    <span class="currency-value">₹ 50</span>
+                </ion-label>
+                
+            </ion-item>
+
+            <ion-item (click)="showCredits()">
+                <ion-label>
+                    Credits
+                </ion-label>
+                <ion-icon name="thumbs-up" item-start></ion-icon>
+            </ion-item>
+
+            <ion-item (click)="shareApp()">
+                <ion-label>
+                    Share App
+                </ion-label>
+                <ion-icon name="share" item-start></ion-icon>
+            </ion-item>
+
+            <ion-item (click)="rateApp()">
+                <ion-label>
+                    Rate App
+                </ion-label>
+                <ion-icon name="star" item-start></ion-icon>
+            </ion-item>
+
+        </ion-list>
+        
+        <ion-list *ngIf='credit'>
+            <div class="arrow-button">
+                <ion-icon name="arrow-back" (click)="cancelCredit()"></ion-icon>
+            </div>
+            <div class="credit-block">
+                <a href="https://sites.google.com/view/4in1/home/credits" class="credit-text">https://sites.google.com/view/4in1/home/credits</a>
+            </div>
+        </ion-list>
+
+    </div>
+</ion-content>

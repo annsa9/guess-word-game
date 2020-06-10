@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar class="main-nav">
+    <ion-title>
+      Puzzle world
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header">
+
+  <section *ngIf="!isAnswerCorrect">
+    <section class="img-box">
+    
+    </section>
+    
+    <section class="answer-block">
+      <div *ngIf="!showResult" class="answer-block-display">
+        <div *ngFor="let item of userSelected; let i = index;" class="letter-box" (click)="shuffleAnswerTap(item, i)">
+          {{item}}
+        </div>
+      </div>
+
+      <div *ngIf="showResult" class="answer-block-display">
+        <div *ngIf="!isAnswerCorrect" class="wrong-text">
+          Wrong!
+        </div>
+      </div>
+
+    </section>
+
+    <section class="hint-block">
+      <button ion-fab class="hint-button" large>
+          <ion-icon ios="ios-bulb" md="md-bulb" class="bulb-icon"></ion-icon>
+      </button>
+    </section>
+    
+    <section class="shuffle-block">
+      <div *ngFor="let item of finalRandomLetters | slice:0:5; let i = index;" class="letter-box-shuffle" (click)="shuffleTap(item, i)">
+        {{item}}
+      </div>
+    </section>
+    <section class="shuffle-block">
+      <div *ngFor="let item of finalRandomLetters | slice:5:10; let i = index;" class="letter-box-shuffle" (click)="shuffleTap(item, i+5)">
+        {{item}}
+      </div>
+    </section>
+  </section>
+
+  <section *ngIf="isAnswerCorrect" class="correct-block">
+      <div class="Correct-word">
+        Correct!
+      </div>
+      <div>
+        <button ion-button class="next-button" round (click)="nextQuestion()">Next</button>
+      </div>
+  </section>
+
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar class="main-nav">
+    <ion-title>
+      Puzzle world
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header">
+  <section class="img-box">
+
+  </section>
+
+  <section class="answer-block">
+   <span *ngFor="let item of userSelected" class="letter-box">
+     {{item}}
+   </span>
+  </section>
+
+  <section class="shuffle-block">
+
+  </section>
+</ion-content>

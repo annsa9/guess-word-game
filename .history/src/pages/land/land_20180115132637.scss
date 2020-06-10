@@ -1,0 +1,31 @@
+.main-land {
+    background: $themeColor;
+    position: relative;
+}
+
+.play-block {
+    margin-top: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.play-button {
+    background: $themeColor;
+    color: white;
+    font-size: 40px;
+    letter-spacing: 6px;
+    text-align: center;
+}
+
+.bottom-block {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.setting-button {
+    background: $themeColor;
+    color: white;
+    font-size: 40px;
+    text-align: center;    
+}

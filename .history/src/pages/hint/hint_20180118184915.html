@@ -1,0 +1,58 @@
+<ion-content class="main-view">
+    <div class="overlay" (click)="dismiss()"></div>
+    <div class="hint-content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>
+                    Get Hints
+                </ion-title>
+                <ion-buttons start>
+                    <button ion-button (click)="dismiss()">
+                        <span ion-text color="primary" showWhen="ios">Cancel</span>
+                        <ion-icon name="md-close" showWhen="android, windows" class="icon-cancel"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-list no-border *ngIf='!credit'>
+
+            <ion-item class="money-class" (click)="purchaseInApp()">
+                <span>
+                    10 hints
+                </span>
+                <span class="currency-value">₹ 20</span>
+            </ion-item>
+
+            <ion-item class="money-class" (click)="purchaseInApp()">
+                <span>
+                    20 hints
+                </span>
+                <span class="currency-value">₹ 40</span>
+            </ion-item>
+
+            <ion-item class="money-class" (click)="purchaseInApp()">
+                <span>
+                    60 hints
+                </span>
+                <span class="currency-value">₹ 100</span>
+            </ion-item>
+
+            <ion-item class="money-class" (click)="purchaseInApp()">
+                <span>
+                    100 hints
+                </span>
+                <span class="currency-value">₹ 150</span>
+            </ion-item>
+
+            <ion-item class="money-class" (click)="purchaseInApp()">
+                <span>
+                    Remove Ads
+                </span>
+                <span class="currency-value">₹ 50</span>
+            </ion-item>
+
+        </ion-list>
+
+    </div>
+</ion-content>

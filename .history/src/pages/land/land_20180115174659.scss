@@ -1,0 +1,70 @@
+.main-land {
+    background: $themeColor;
+    position: relative;
+}
+
+.play-block {
+    margin-top: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.play-button {
+    background: $themeColor2;
+    color: $themeColor;
+    font-size: 40px;
+    letter-spacing: 6px;
+    width: 200px;
+    height: 60px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.bottom-block {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+.setting-button {
+    background: $themeColor2;
+    color: $themeColor;
+    font-size: 35px;
+    text-align: center;   
+    border-radius: 5px;
+    width: 50px;
+    height: 50px; 
+}
+
+.level-block {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.level-text {
+    font-size: 18px;
+    background: $themeColor2;
+    color: $themeColor;
+    padding: 2px 15px;
+    padding-right: 25px;
+    border-radius: 5px;
+}
+
+.level-number {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    line-height: 70px;
+    text-align: center;
+    background: $themeColor;   
+    border: 2px solid $themeColor2;
+    margin-left: -10px;
+
+    font-size: 20px;
+    color: white;
+}
+
+.level-merge {
+    display: flex;
+    align-items: center;
+}

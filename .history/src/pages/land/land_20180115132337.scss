@@ -1,0 +1,24 @@
+.main-land {
+	background: $themeColor;
+}
+
+.play-block {
+    margin-top: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.play-button {
+    background: $themeColor;
+    color: white;
+    font-size: 40px;
+    letter-spacing: 6px;
+    text-align: center;
+}
+
+.setting-button {
+    background: $themeColor;
+    color: white;
+    font-size: 40px;
+    text-align: center;    
+}

@@ -1,0 +1,18 @@
+.main-land {
+	background: $themeColor;
+}
+
+.play-block {
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.play-button {
+    background: $themeColor1;
+    color: white;
+    width: 140px;
+    height: 40px;
+    font-size: 30px;
+    letter-spacing: 6px;
+}

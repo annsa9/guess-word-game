@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <section class="home-header">
+      <div class="one-block">
+        <button class="home-button" (click)="goToLand()">HOME</button>
+      </div>
+      <div class="two-block">
+        <ion-chip>
+          <ion-label>0</ion-label>          
+          <ion-icon name="checkmark" color="dark"></ion-icon>
+        </ion-chip>
+      </div>
+      <div class="three-block" (click)="showHintModal()">
+        <div class="hint-money">
+          <div class="hint-money-button">
+            <ion-icon ios="ios-bulb" md="md-bulb"></ion-icon>
+          </div>
+          <div class="hint-money-button-sub">
+            <div class="hint-combine">
+              <span class="user-hints">
+                20
+              </span>
+              <span class="add-button">
+                <ion-icon name="add"></ion-icon>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header">
+
+  <section *ngIf="!isAnswerCorrect">
+    <section class="img-box">
+      <div class="img-block">
+        <div class="img-div">
+          <img src="https://drive.google.com/uc?export=download&id=1laARZDlh0Q28aXg-NBhNRY9My7Efi_l5" 
+          class="image-scale img-1" (click)="showFullImage('https://drive.google.com/uc?export=download&id=1laARZDlh0Q28aXg-NBhNRY9My7Efi_l5')"/>
+        </div>
+        <div class="img-div">
+          <img src="https://drive.google.com/uc?export=download&id=1l1gT7Y1_NMG9gqsKZq6rCXE1q7_P52CB"
+           class="image-scale img-2" (click)="showFullImage('https://drive.google.com/uc?export=download&id=1l1gT7Y1_NMG9gqsKZq6rCXE1q7_P52CB')"/>
+        </div>
+      </div>
+      <div class="img-block">
+        <div class="img-div">
+          <img src="https://drive.google.com/uc?export=download&id=1_tpdBBN27ItznZwBN-x3_0YT3Z0nCo4F" 
+          class="image-scale img-3" (click)="showFullImage('https://drive.google.com/uc?export=download&id=1_tpdBBN27ItznZwBN-x3_0YT3Z0nCo4F')"/>         
+        </div>
+        <div class="img-div">
+          <img src="https://drive.google.com/uc?export=download&id=1fAK1I2U3tJzFokbZzifU9qR-4WXAcGE5"
+           class="image-scale img-4" (click)="showFullImage('https://drive.google.com/uc?export=download&id=1fAK1I2U3tJzFokbZzifU9qR-4WXAcGE5')"/>        
+        </div>
+      </div>
+      <div class="img-circle">
+        <span>4</span>
+      </div>
+    </section>
+    
+    <section class="answer-block">
+      <div *ngIf="!showResult" class="answer-block-display">
+        <div *ngFor="let item of userSelected; let i = index;" class="letter-box" (click)="(hintActive[i]==true) ? $event.stopPropagation() : shuffleAnswerTap(item, i)">
+          <span [ngClass]="(hintActive[i]==true) ? 'hint-active':'hint-inactive'">
+            {{item}}
+          </span>            
+        </div>
+      </div>
+
+      <div *ngIf="showResult" class="answer-block-display">
+        <div *ngIf="!isAnswerCorrect" class="wrong-text">
+          Wrong!
+        </div>
+      </div>
+
+    </section>
+
+    <section class="hint-block">
+      <button ion-fab class="hint-button" (click)="showHint()">
+          <ion-icon ios="ios-bulb" md="md-bulb"></ion-icon>
+      </button>
+      <div *ngIf="isHintText" class="hint-text animated shake">
+        HINT
+      </div>
+    </section>
+    
+    <section class="shuffle-block">
+      <div *ngFor="let item of finalRandomLetters | slice:0:5; let i = index;" class="letter-box-shuffle" (click)="shuffleTap(item, i)">
+        {{item}}
+      </div>
+    </section>
+    <section class="shuffle-block">
+      <div *ngFor="let item of finalRandomLetters | slice:5:10; let i = index;" class="letter-box-shuffle" (click)="shuffleTap(item, i+5)">
+        {{item}}
+      </div>
+    </section>
+  </section>
+
+  <section *ngIf="isAnswerCorrect" class="correct-block">
+      <div class="Correct-word animated zoomIn">
+        <span>
+          <ion-icon name="star" class="first-star"></ion-icon>
+        </span>
+        <span class="nice-text">
+          NICE JOB
+        </span>
+        <span>
+          <ion-icon name="star" class="second-star"></ion-icon>
+        </span>
+      </div>
+      <div class="made-it-block">
+        <div class="made-it">
+          You made it!
+        </div>
+      </div>
+      <div class="answer-got-block">
+        <div class="answer-got animated pulse infinite">
+          {{answer}}
+        </div>
+      </div>
+      <div class="continue-block">
+        <button ion-button class="next-button" round (click)="nextQuestion()">
+          <span>
+            Continue
+          </span>
+          <span class="arrow-continue">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </span>
+        </button>
+      </div>
+  </section>
+
+</ion-content>

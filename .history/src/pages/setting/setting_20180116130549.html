@@ -1,0 +1,56 @@
+<ion-content class="main-view">
+    <div class="overlay" (click)="dismiss()"></div>
+    <div class="setting-content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>
+                    Setting
+                </ion-title>
+                <ion-buttons start>
+                    <button ion-button (click)="dismiss()">
+                        <span ion-text color="primary" showWhen="ios">Cancel</span>
+                        <ion-icon name="md-close" showWhen="android, windows" class="icon-cancel"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        
+        <ion-list>
+
+            <ion-list-header>
+                Classes
+            </ion-list-header>
+
+            <ion-item>
+                <ion-icon name='planet' item-start></ion-icon>
+                Astronomy
+                <ion-note item-end>
+                    To the moon
+                </ion-note>
+            </ion-item>
+
+            <ion-item>
+                <ion-toggle checked="false"></ion-toggle>
+                <ion-label>
+                    Muggle Studies
+                </ion-label>
+                <ion-icon name='body' item-start></ion-icon>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='leaf' item-start></ion-icon>
+                Herbology
+                <ion-icon name='rose' item-end color="secondary"></ion-icon>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='flask' item-start></ion-icon>
+                Potions
+                <ion-note item-end>
+                    Poisonous
+                </ion-note>
+            </ion-item>
+        </ion-list>
+
+    </div>
+</ion-content>

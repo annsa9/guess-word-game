@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar class="main-nav">
+    <ion-title>
+      Puzzle world
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header">
+  <section class="img-box">
+
+  </section>
+
+  <section class="answer-block">
+   <span *ngFor="let item of userSelected" class="letter-box">
+     {{item}}
+   </span>
+  </section>
+
+  <section class="shuffle-block">
+    <span *ngFor="let item of finalRandomLetters | slice:0:5; let i = index;">
+      <span class="letter-box-shuffle">
+         {{item}}
+      </span>
+    </span>
+    <div></div>
+    <span *ngFor="let item of finalRandomLetters | slice:5:10; let i = index;" class="letter-box-shuffle">
+        {{item}}
+    </span>
+  </section>
+</ion-content>

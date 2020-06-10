@@ -1,0 +1,13 @@
+.main-view{
+    background: transparent;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: .5;
+    background-color: #333;
+}
