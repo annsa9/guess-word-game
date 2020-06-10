@@ -42,7 +42,7 @@
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-headercolor": "^1.0.0",
     "cordova-plugin-inapppurchase": "^1.2.0",
-    "cordova-plugin-ionic-webview": "^1.1.16",
+    "cordova-plugin-ionic-webview": "^5.0.0",
     "cordova-plugin-market": "^1.2.0",
     "cordova-plugin-nativeaudio": "^3.0.9",
     "cordova-plugin-network-information": "^2.0.1",
